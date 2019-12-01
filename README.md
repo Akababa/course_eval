@@ -8,14 +8,16 @@ Use course evaluations to predict who will get tenure and more!
 `scrape.py` downloads:
 - Course evaluations from mathsoc website (into `scraped_data` folder), needs UW login (hardcoded)
 - Staff salaries from uwaterloo website (into `salaries` folder)
+- Class sizes from "Schedule of Classes" (into `catalog` folder)
 
 Uncomment the lines at the end of the file to run them.
 
 ## Data preprocessing
-`process.py` takes all the course evaluations downloaded by the scraper and combines them into a single csv.
-Currently it just aggregates survey responses by averaging (ignoring "No opinion") and outputs `averages.csv`.
+`process.py` takes all the course evaluations downloaded by the scraper and combines them into a single csv. 
+Currently it just aggregates survey responses by averaging (ignoring "No opinion") and outputs `averages.csv`. Lower scores are better.
+It also joins the enrolment numbers and calculates response rates, outputting `averages_enrol.csv`.
 
-`fix.py` then modifies the names in `salaries` folder to match those in the course evaluations. Thus lower is better.
+`fix.py` then modifies the names in `salaries` folder to match those in the course evaluations. 
 
 ## Data analysis
 The jupyter notebook files contain some visualization and analysis.
