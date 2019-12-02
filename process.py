@@ -57,7 +57,7 @@ def dump_averages_csv(filename):
     return df
 
 
-def join_enrolment(filename,output):
+def join_enrolment(filename, output):
     if not os.path.exists(filename):
         print(f"{filename} not found, aborting")
         return
@@ -71,8 +71,8 @@ def join_enrolment(filename,output):
     # del df1.index.name
     assert df1.index.is_monotonic
     df["enrolled"] = df1.enrolled.astype(int)
-    df["enrolled"]=df[["enrolled","num_responses"]].max(axis=1)
-    df["response_rate"]=df.num_responses/df.enrolled
+    df["enrolled"] = df[["enrolled", "num_responses"]].max(axis=1)
+    df["response_rate"] = df.num_responses / df.enrolled
     # df["cc_sec"] = [f"{c} {a.split(' / ')[0]} - {b:03d}" for a, b, c in zip(df.ccode, df.section, df.term)]
     # df2["cc_sec"] = [f"{c} {a.split(' / ')[0]} - {b:03d}" for a, b, c in zip(df2.ccode, df2.section, df2.term)]
 
@@ -87,4 +87,4 @@ def join_enrolment(filename,output):
 
 # dump_averages_csv("averages.csv")
 
-join_enrolment("averages.csv","averages_enrol.csv")
+join_enrolment("averages.csv", "averages_enrol.csv")
