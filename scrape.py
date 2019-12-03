@@ -131,13 +131,15 @@ def dump_all_salaries(year):
     df.to_csv(filename, index=False)
 
     print(f"{len(df.index)} salaries scraped from {r.url} and dumped to {filename}")
+
+
 import concurrent.futures
 
 
 def dump_catalog(terms):
     subjects = ['ACTSC', 'AMATH', 'CS', 'PMATH', 'PHYS', 'CO', 'QIC', 'COMM',
-       'ECE', 'CM', 'MATBUS', 'MATH', 'MTHEL', 'STAT', 'SYDE', 'EARTH',
-       'SE', 'BIOL', 'ACC', 'ENGL']#"CS,MATH,STAT,ACTSC,AMATH,CO,PMATH,COMM,CM,MATBUS,MTHEL,SE,ACC,ECE,PHYS".split(",")
+                'ECE', 'CM', 'MATBUS', 'MATH', 'MTHEL', 'STAT', 'SYDE', 'EARTH',
+                'SE', 'BIOL', 'ACC', 'ENGL']
     levels = ["under", "grad"]
     url = CATALOG_URL + "?sess={}&subject={}&level={}"
     for term in terms:
@@ -147,13 +149,12 @@ def dump_catalog(terms):
             continue
 
         df = pd.DataFrame(columns=["term", "ccode", "section", "enrolled"])
-        with concurrent.futures.ThreadPoolExecutor(max_workers=1000) as executor:
-            urls = []
-            for subject, level in itertools.product(subjects, levels):
-                url_f = url.format(term, subject, level)
-                urls.append(url_f)
-            responses=executor.map(sess.get,urls)
-
+        urls = []
+        for subject, level in itertools.product(subjects, levels):
+            url_f = url.format(term, subject, level)
+            urls.append(url_f)
+        with concurrent.futures.ThreadPoolExecutor() as executor:
+            responses = executor.map(sess.get, urls)
 
         for r, url_f, (subject, level) in zip(responses, urls, itertools.product(subjects, levels)):
             # r = sess.get(url_f)

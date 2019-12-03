@@ -1,6 +1,6 @@
 # Prof ratings
 
-![a](sal_dist.png)
+<img src="img/sal_dist.png" width="500">
 
 Use course evaluations to predict who will get tenure and more!
 
