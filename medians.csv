@@ -1,4 +1,4 @@
-term,ccode,section,instructor,organization,expl_lvl,q_treatment,visual,oral,help,interesting,overall,attendance,assign_helpful,printed_notes,textbook,new_material,assign_amount,hours_outside,num_responses,enrolled
+term,ccode,section,instructor,org,expl_lvl,q_treat,visual,oral,help,interest,overall,attend,assign,notes,textbook,new_mat,assign_amt,outside,num_resp
 1149,['STAT 372'],1,Peter Balka,2.0,3.0,2.0,2.0,2.0,2.0,2.0,2.0,1.0,2.0,2.0,2.0,3.0,3.0,2.0,28,68
 1161,['CS 349'],2,Jeffrey Avery,1.0,3.0,1.0,1.0,1.0,1.0,2.0,1.0,2.0,2.0,1.0,2.0,3.0,2.0,3.0,31,73
 1161,['MATH 128'],4,Jennifer Nelson,1.0,3.0,1.0,1.0,1.0,1.0,2.0,1.0,1.0,2.0,1.0,2.0,3.0,3.0,2.0,70,115

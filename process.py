@@ -15,9 +15,9 @@ def load_course(filename):
 
 def make_df():
     df = pd.DataFrame(
-        columns=["term", "ccode", "section", "instructor", "organization", "expl_lvl", "q_treatment", "visual", "oral",
-                 "help", "interesting", "overall", "attendance", "assign_helpful", "printed_notes", "textbook",
-                 "new_material", "assign_amount", "hours_outside", "num_responses"])
+        columns=["term", "ccode", "section", "instructor", "org", "expl_lvl", "q_treat", "visual", "oral",
+                 "help", "interest", "overall", "attend", "assign", "notes", "textbook",
+                 "new_mat", "assign_amt", "outside", "num_resp"])
     for filename in os.listdir("scraped_data"):
         cc, sec, instr, evaluation, term = load_course(filename)
 
@@ -71,8 +71,8 @@ def join_enrolment(filename, output):
     # del df1.index.name
     assert df1.index.is_monotonic
     df["enrolled"] = df1.enrolled.astype(int)
-    df["enrolled"] = df[["enrolled", "num_responses"]].max(axis=1)
-    df["response_rate"] = df.num_responses / df.enrolled
+    df["enrolled"] = df[["enrolled", "num_resp"]].max(axis=1)
+    df["resp_rate"] = df.num_resp / df.enrolled
     # df["cc_sec"] = [f"{c} {a.split(' / ')[0]} - {b:03d}" for a, b, c in zip(df.ccode, df.section, df.term)]
     # df2["cc_sec"] = [f"{c} {a.split(' / ')[0]} - {b:03d}" for a, b, c in zip(df2.ccode, df2.section, df2.term)]
 

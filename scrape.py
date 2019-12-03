@@ -139,8 +139,7 @@ import concurrent.futures
 def dump_catalog(terms):
     subjects = ['ACTSC', 'AMATH', 'CS', 'PMATH', 'PHYS', 'CO', 'QIC', 'COMM',
                 'ECE', 'CM', 'MATBUS', 'MATH', 'MTHEL', 'STAT', 'SYDE', 'EARTH',
-                'SE', 'BIOL', 'ACC',
-                'ENGL']  # "CS,MATH,STAT,ACTSC,AMATH,CO,PMATH,COMM,CM,MATBUS,MTHEL,SE,ACC,ECE,PHYS".split(",")
+                'SE', 'BIOL', 'ACC', 'ENGL']
     levels = ["under", "grad"]
     url = CATALOG_URL + "?sess={}&subject={}&level={}"
     for term in terms:
