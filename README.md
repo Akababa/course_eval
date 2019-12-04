@@ -1,4 +1,8 @@
-# Prof ratings
+# A Statistical Analysis of UWaterloo Math Faculty Course Evaluations
+
+Michael Pang, Jiachen Wang, Jeffrey Zhao
+
+---
 
 <img src="img/sal_dist.png" width="500">
 
@@ -12,27 +16,19 @@ Use course evaluations to predict who will get tenure and more!
 
 Uncomment the lines at the end of the file to run them.
 
-## Data preprocessing
+## Data Preprocessing
 `process.py` takes all the course evaluations downloaded by the scraper and combines them into a single csv. 
 Currently it just aggregates survey responses by averaging (ignoring "No opinion") and outputs `averages.csv`. Lower scores are better.
 It also joins the enrolment numbers and calculates response rates, outputting `averages_enrol.csv`.
 
 `fix.py` then modifies the names in `salaries` folder to match those in the course evaluations. 
 
-## Data analysis
-The jupyter notebook files contain some visualization and analysis.
+## Data Analysis and Modelling
+There are multiple Jupyter notebooks that contain the source code performing the data analysis and constructing the classifiers explored in the report:
+ - EDA.ipynb: Elementary data analysis performed. Generates Sections 1-3.
+ - Viz.ipynb: Data visualization. Generates Sections 1-3.
+ - classifier_comparisons.ipynb: Constructs and explores classifiers. Generates Sections 4-5.
+ - Analysis.ipynb: Performs further, deeper analysis and aims to answer questions about the dataset. Generates Section 6.
 
-So far I tried:
-- Remove surveys with <=10 responses and instructors with <=2 courses, we're left with 3120 classes across 312 course codes and 352 profs.
-- Linear regression on overall score vs. other survey responses is R^2=0.9999988686940563 (not collinear in features though)
-- Logistic regression to predict tenure (Prof or Associate Prof) is better than random but ends up with some odd coefficients
-- Lots of looking up random profs
-
-Things to try:
-- preprocess surveys in other ways (ex. use median or change "too much/too little" questions)
-- predict title (multi-class), do pca, other algorithms
-- write about how interesting the dataset is
-- do some rankings (see [blog post](https://medium.com/@uw_data_scientist/analyzing-uw-math-faculty-course-evaluations-4eee687ffd65) for inspiration)
-
-## Other stuff
+## Other Stuff
 `bai` folder is someone else's code (they emailed it to me to help with some missing data)
